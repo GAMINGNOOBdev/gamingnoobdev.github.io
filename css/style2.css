@@ -4,7 +4,7 @@ body, html
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #191919;
+    background-color: #290000;
 }
 
 button
@@ -30,7 +30,7 @@ button
 
 .navigation-bar
 {
-    background-color: #292929;
+    background-color: #390000;
     height: 64px;
     width: 100%;
     text-align:center;
@@ -64,8 +64,8 @@ button
 
 .navigation-bar li a
 {
-    color: green;
-    text-shadow: 0 0 10px #00ff00;
+    color: red;
+    text-shadow: 0 0 10px #ff0000;
     font-size: 16px;
     text-decoration: none;
     line-height: 64px;
@@ -82,8 +82,8 @@ button
 
 .navigation-bar li button
 {
-    color: green;
-    text-shadow: 0 0 10px #00ff00;
+    color: red;
+    text-shadow: 0 0 10px #ff0000;
     font-size: 16px;
     text-decoration: none;
     padding: 5px 15px;
@@ -104,8 +104,8 @@ button
 
 .contents
 {
-    color: green;
-    text-shadow: 0 0 10px #009900;
+    color: red;
+    text-shadow: 0 0 10px #990000;
     padding-top: 64px;
     word-break: break-word;
     word-wrap: break-word;
@@ -117,8 +117,8 @@ button
     max-width: 45%;
     text-align: left;
 
-	border: 1px solid green;
-	box-shadow: 1px 1px 1px 1px #003300;
+	border: 1px solid red;
+	box-shadow: 1px 1px 1px 1px #330000;
     padding: 5px;
 }
 
@@ -198,3 +198,23 @@ button
 /**
  * huge thanks to the author of https://oudkee.neocities.org/tutorials/tutcrt
  */
+
+/**
+ * back button
+ */
+
+.back_button
+{
+    all: unset;
+    position: fixed;
+    font-size: 50px;
+    bottom: 0;
+    right: 0;
+    color: red;
+    text-shadow: 0 0 10px #990000;
+}
+
+.back_button:hover
+{
+    cursor: pointer;
+}
