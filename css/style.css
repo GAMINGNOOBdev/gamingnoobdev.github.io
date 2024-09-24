@@ -75,6 +75,25 @@ body, html
     border-color: rgba(1,1,1,1);
 }
 
+.navigation-bar button
+{
+    all:unset;
+    color: green;
+    text-shadow: 0 0 10px #00ff00;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 5px 15px;
+    text-align: center;
+    border: 1px solid rgba(1,1,1,0);
+    border-radius: 6px;
+}
+
+.navigation-bar button:hover
+{
+    cursor: pointer;
+    border-color: rgba(1,1,1,1);
+}
+
 /**
  * Contents
  */
@@ -96,6 +115,18 @@ body, html
 	border: 1px solid green;
 	box-shadow: 1px 1px 1px 1px #003300;
     padding: 5px;
+}
+
+.contents button
+{
+    all:unset;
+    font-size: 20px;
+}
+
+.contents button:hover
+{
+    font-size: 20px;
+    cursor: pointer;
 }
 
 /**
