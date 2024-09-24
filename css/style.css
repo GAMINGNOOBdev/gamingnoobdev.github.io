@@ -1,0 +1,161 @@
+body, html
+{
+    font-family: sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #191919;
+}
+
+.logo
+{
+    float: left;
+}
+
+/**
+ * Navigation bar
+ */
+
+#navigation-container
+{
+    width: 800px;
+    margin: 0 auto;
+    height: 64px;
+}
+
+.navigation-bar
+{
+    background-color: #292929;
+    height: 64px;
+    width: 100%;
+    text-align:center;
+    position: fixed;
+    top:0;
+}
+
+.navigation-bar img
+{
+    float:left;
+}
+
+.navigation-bar ul
+{
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    display:inline-block;
+    vertical-align:top;
+}
+
+.navigation-bar li
+{
+    list-style-type: none;
+    padding: 0px;
+    height: 24px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    display: inline;
+}
+
+.navigation-bar li a
+{
+    color: green;
+    text-shadow: 0 0 10px #00ff00;
+    font-size: 16px;
+    text-decoration: none;
+    line-height: 64px;
+    padding: 5px 15px;
+    text-align: center;
+    border: 1px solid rgba(1,1,1,0);
+    border-radius: 6px;
+}
+
+.navigation-bar li a:hover
+{
+    border-color: rgba(1,1,1,1);
+}
+
+/**
+ * Contents
+ */
+
+.contents
+{
+    color: green;
+    text-shadow: 0 0 10px #009900;
+    padding-top: 64px;
+}
+
+.contents p
+{
+    display: inline-block;
+    word-break: break-word;
+    word-wrap: break-word;
+    max-width: 45%;
+
+	border: 1px solid green;
+	box-shadow: 1px 1px 1px 1px #003300;
+    padding: 5px;
+}
+
+/**
+ * CRT Effect
+ */
+
+.contents::before
+{
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+@keyframes flicker {
+    0% {
+    opacity: 0.27861;
+    }
+    5% {
+    opacity: 0.34769;
+    }
+    10% {
+    opacity: 0.23604;
+    }
+    15% {
+    opacity: 0.10626;
+    }
+    20% {
+    opacity: 0.18128;
+    }
+    25% {
+    opacity: 0.10626;
+    }
+    30% {
+    opacity: 0.18128;
+    }
+    35% {
+    opacity: 0.23604;
+    }
+}
+
+.contents::after
+{
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.5s infinite;
+}
