@@ -274,7 +274,7 @@ function setupCommands()
         consolePrintLine(" Volume in drive C is BE-TERM97");
         consolePrintLine(" Volume Serial Number is ????-????");
         consolePrintLine(" Directory of C:\\");
-        consolePrintLine("");
+        consolePrintLine("\t");
         consolePrintLine("INDEX     HTM       810 ??-??-??  6:66a");
         consolePrintLine("PROJECTS  HTM     1,881 ??-??-??  6:66a");
         consolePrintLine("TERMINAL  HTM       666 ??-??-??  6:66a");
