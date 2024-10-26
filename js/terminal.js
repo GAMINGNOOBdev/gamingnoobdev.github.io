@@ -260,7 +260,7 @@ function setupCommands()
 
         consolePrintLine("if thy seek to copy the hex, edit the html text", PURPLE);
         consolePrintLine("if thy seem to be lazy to edit the html, look at the browser debug console", PURPLE);
-        console.debug(aha);
+        console.warn(aha);
     };
 
     commands["clear"] = commands["cls"] = () => {
