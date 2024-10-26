@@ -11,7 +11,7 @@ var commands;
 
 function focusAndMoveCursorToTheEnd()
 {
-    cmdLine.focus();
+    focusCmdLine();
 
     const range = document.createRange();
     const selection = window.getSelection();
@@ -30,8 +30,24 @@ function initEverything()
     cmdLine = document.getElementById("cmdline");
     stdout = document.getElementById("stdout");
 
+    document.addEventListener('mousedown', () => {
+        focusCmdLine();
+    });
+
     document.addEventListener('selectionchange', () => {
         focusCmdLine();
+
+        if (document.activeElement.id !== 'cmdline') return;
+
+        const range = window.getSelection().getRangeAt(0);
+        const start = range.startOffset;
+        const end = range.endOffset;
+        const length = cmdLine.textContent.length;
+
+        if (end < length)
+            cmdLine.classList.add('noCaret');
+        else
+            cmdLine.classList.remove('noCaret');
     });
 
     cmdLine.addEventListener('input', () =>
@@ -50,8 +66,15 @@ function initEverything()
         focusAndMoveCursorToTheEnd();
     });
 
+    document.addEventListener('keydown', (e) =>
+    {
+        if (e.target !== cmdLine)
+            focusAndMoveCursorToTheEnd();
+    });
+
     cmdLine.addEventListener('keydown', (e) => {    
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter')
+        {
             e.preventDefault();
                 
             handleCommand(cmdLine.textContent);    
@@ -277,10 +300,10 @@ function setupCommands()
         consolePrintLine("\t");
         consolePrintLine("INDEX     HTM       810 ??-??-??  6:66a");
         consolePrintLine("PROJECTS  HTM     1,881 ??-??-??  6:66a");
-        consolePrintLine("TERMINAL  HTM       666 ??-??-??  6:66a");
+        consolePrintLine("TERMINAL  HTM       715 ??-??-??  6:66a");
         consolePrintLine("SOCIALS   HTM     3,286 ??-??-??  6:66a");
         consolePrintLine("ABOUT     HTM     1,504 ??-??-??  6:66a");
-        consolePrintLine("         4 file(s)        8,147 bytes");
+        consolePrintLine("         4 file(s)        8,196 bytes");
         consolePrintLine("                          ????? bytes free");
         consolePrintLine("\t");
     };

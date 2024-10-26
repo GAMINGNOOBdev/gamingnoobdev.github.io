@@ -109,6 +109,7 @@ text-shadow: 0 0 10px #009900;
     display: inline;
     outline: none;
     visibility: visible;
+    caret-color: transparent;
     text-align: left;
 }
 
@@ -131,9 +132,24 @@ text-shadow: 0 0 10px #009900;
     }
 }
 
-#input:focus
+#cmdline:focus + #doscursor
 {
     animation: blink 1s steps(5, start) infinite;
+}
+
+#cmdline.noCaret + #doscursor
+{
+    visibility: hidden;
+}
+
+#doscursor
+{
+    border: 0;
+    padding: 0;
+    outline: none;
+    background-color: #0F0;
+    display: inline-block;
+    font-family: monospace;
 }
 
 #stdout
