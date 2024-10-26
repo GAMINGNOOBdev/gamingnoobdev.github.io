@@ -140,3 +140,31 @@ text-shadow: 0 0 10px #009900;
 {
     white-space: pre;
 }
+
+/**
+ * colored text
+ */
+
+#redtext
+{
+    color: #ff0000;
+    text-shadow: 0 0 10px #990000;
+}
+
+#bluetext
+{
+    color: #2222ff;
+    text-shadow: 0 0 10px #222299;
+}
+
+#yellowtext
+{
+    color: #ffff00;
+    text-shadow: 0 0 10px #999900;
+}
+
+#purpletext
+{
+    color: #A000A0;
+    text-shadow: 0 0 10px #700070;
+}
