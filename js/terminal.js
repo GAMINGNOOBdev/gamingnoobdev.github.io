@@ -65,7 +65,7 @@ function focusCmdLine()
 
 function handleCommand(command)
 {
-    consolePrintLine(`> ${ command }`);
+    consolePrintLine(`C:\\> ${ command }`);
     if (command == "")
         return;
 
@@ -95,19 +95,21 @@ function setupCommands()
 {
     commands = new Object()
 
-    commands["exit"] = () => {};
+    commands["quit"] = commands["exit"] = () => {
+        consolePrintLine("you can't escape.");
+    };
 
     commands["help"] = () => {
         consolePrintLine("No.");
     };
 
-    commands["cls"] = () => {
+    commands["clear"] = commands["cls"] = () => {
         var stdoutChildren = stdout.children.length;
         for (let i = 0; i < stdoutChildren; i++)
             stdout.removeChild(stdout.children[0]);
     };
 
-    commands["dir"] = () => {
+    commands["ls"] = commands["dir"] = () => {
         consolePrintLine("");
         consolePrintLine(" Volume in drive C is BE-TERM666");
         consolePrintLine(" Volume Serial Number is ????-????");

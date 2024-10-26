@@ -1,6 +1,12 @@
+@font-face
+{
+    font-family: msdosfont;
+    src: url('../fonts/MorePerfectDOSVGA.ttf') format("truetype");
+}
+
 body, html
 {
-    font-family: sans-serif;
+    font-family: msdosfont, monospace, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -198,3 +204,27 @@ button
 /**
  * huge thanks to the author of https://oudkee.neocities.org/tutorials/tutcrt
  */
+
+#redtext
+{
+    color: #ff0000;
+    text-shadow: 0 0 10px #990000;
+}
+
+#bluetext
+{
+    color: #2222ff;
+    text-shadow: 0 0 10px #222299;
+}
+
+#yellowtext
+{
+    color: #ffff00;
+    text-shadow: 0 0 10px #999900;
+}
+
+#purpletext
+{
+    color: #A000A0;
+    text-shadow: 0 0 10px #700070;
+}
