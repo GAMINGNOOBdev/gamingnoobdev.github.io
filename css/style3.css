@@ -35,8 +35,8 @@ button
     max-width: 45%;
     text-align: left;
 
-	border: 1px solid blue;
-	box-shadow: 1px 1px 1px 1px #000033;
+    border: 1px solid blue;
+    box-shadow: 1px 1px 1px 1px #000033;
     padding: 5px;
 }
 
@@ -118,7 +118,7 @@ button
  */
 
 /**
- * back button
+ * decrypt button
  */
 
 .decrypt_button

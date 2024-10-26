@@ -1,0 +1,142 @@
+@font-face
+{
+    font-family: msdosfont;
+    src: url('../fonts/MorePerfectDOSVGA.ttf') format("truetype");
+}
+
+body
+{
+    font-family: msdosfont, monospace;
+    font-size: large;
+    text-align: left;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    word-break: break-all;
+    margin: 0;
+    padding: 0;
+    background: #191919;
+}
+
+button
+{
+    all: unset;
+}
+
+/**
+ * Contents
+ */
+
+.contents
+{
+color: green;
+text-shadow: 0 0 10px #009900;
+}
+
+/**
+* CRT Effect
+*/
+
+.contents::before
+{
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+@keyframes flicker
+{
+    0% {
+        opacity: 0.27861;
+    }
+    5% {
+        opacity: 0.34769;
+    }
+    10% {
+        opacity: 0.23604;
+    }
+    15% {
+        opacity: 0.10626;
+    }
+    20% {
+        opacity: 0.18128;
+    }
+    25% {
+        opacity: 0.10626;
+    }
+    30% {
+        opacity: 0.18128;
+    }
+    35% {
+        opacity: 0.23604;
+    }
+}
+
+.contents::after
+{
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.5s infinite;
+}
+
+/**
+* huge thanks to the author of https://oudkee.neocities.org/tutorials/tutcrt
+*/
+
+/**
+ * Command Line Input
+*/
+
+#cmdline
+{
+    display: inline;
+    outline: none;
+    visibility: visible;
+    text-align: left;
+}
+
+#cmdline::selection
+{
+    color: #000;
+    background: #0F0;
+}
+
+#cmdline:empty::before
+{
+    content: ' ';
+}
+
+@keyframes blink
+{
+    to
+    {
+        visibility: hidden;
+    }
+}
+
+#input:focus
+{
+    animation: blink 1s steps(5, start) infinite;
+}
+
+#stdout
+{
+    white-space: pre;
+}
