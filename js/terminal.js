@@ -144,14 +144,10 @@ function setupCommands()
         consolePrintLine("  exit/quit       - Quits the terminal");
     };
 
-    commands["help mom"] = () => {
+    commands["help me"] = () => {
         consolePrintLine("Muscle Man: YOU KNOW WHO ELSE NEEDS HELP?");
         consolePrintLine("...");
         consolePrintLine("me.", PURPLE);
-    };
-
-    commands["help me"] = () => {
-        consolePrintLine("nah", RED);
     };
 
     commands["clear"] = commands["cls"] = () => {
