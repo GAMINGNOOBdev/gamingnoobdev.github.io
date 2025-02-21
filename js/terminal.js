@@ -162,12 +162,12 @@ function setupCommands()
         consolePrintLine(" Volume Serial Number is ????-????");
         consolePrintLine(" Directory of C:\\");
         consolePrintLine("\t");
-        consolePrintLine("INDEX     HTM       810 ??-??-??  6:66a");
-        consolePrintLine("PROJECTS  HTM     1,881 ??-??-??  6:66a");
+        consolePrintLine("INDEX     HTM     2,346 ??-??-??  6:66a");
+        consolePrintLine("PROJECTS  HTM     3,401 ??-??-??  6:66a");
         consolePrintLine("TERMINAL  HTM       715 ??-??-??  6:66a");
-        consolePrintLine("SOCIALS   HTM     3,286 ??-??-??  6:66a");
-        consolePrintLine("ABOUT     HTM     1,504 ??-??-??  6:66a");
-        consolePrintLine("         4 file(s)        8,196 bytes");
+        consolePrintLine("SOCIALS   HTM     3,275 ??-??-??  6:66a");
+        consolePrintLine("ABOUT     HTM     1,929 ??-??-??  6:66a");
+        consolePrintLine("         6 file(s)       11,666 bytes");
         consolePrintLine("                          ????? bytes free");
         consolePrintLine("\t");
     };
