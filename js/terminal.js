@@ -189,4 +189,8 @@ function setupCommands()
     commands["about"] = () => {
         window.location.href = "/about";
     };
+
+    commands["the truth"] = () => {
+        window.location.href = "/code";
+    };
 }
