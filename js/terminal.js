@@ -144,10 +144,14 @@ function setupCommands()
         consolePrintLine("  exit/quit       - Quits the terminal");
     };
 
+    commands["help mom"] = () => {
+        consolePrintLine("Muscle Man: YOU KNOW WHO ELSE NEEDS HELP?", PURPLE);
+        consolePrintLine("...", PURPLE);
+        consolePrintLine("MY MOM!!!!", PURPLE);
+    };
+
     commands["help me"] = () => {
-        consolePrintLine("Muscle Man: YOU KNOW WHO ELSE NEEDS HELP?");
-        consolePrintLine("...");
-        consolePrintLine("me.", PURPLE);
+        consolePrintLine("Error: nah", RED);
     };
 
     commands["clear"] = commands["cls"] = () => {
@@ -188,6 +192,11 @@ function setupCommands()
 
     commands["about"] = () => {
         window.location.href = "/about";
+    };
+
+    commands["gay"] = commands["shit"] = commands["fuck"] = commands["sex"] = commands["yuri"] = commands["Yuri"] = commands["YURI"] = () => {
+        consolePrintLine("YURIIII I LOVE YURI I LOVE GIRLS I LOVE YURI I LOVE GIRLS", RED);
+        consolePrintLine("DO YOU LOVE YURI AND GIRLS TOO?", RED);
     };
 
     commands["the truth"] = () => {
