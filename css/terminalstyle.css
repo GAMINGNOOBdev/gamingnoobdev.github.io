@@ -184,3 +184,11 @@ text-shadow: 0 0 10px #009900;
     color: #A000A0;
     text-shadow: 0 0 10px #700070;
 }
+
+#transtext
+{
+    background-image: linear-gradient(90deg, #F5A9B8, #5BCEFA, #FFFFFF, #5BCEFA, #F5A9B8);
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 0px;
+}

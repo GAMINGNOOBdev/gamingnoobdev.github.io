@@ -128,6 +128,11 @@ button
     padding: 5px;
 }
 
+.contents img
+{
+    max-width: 100%;
+}
+
 .contents button
 {
     font-size: 20px;
@@ -227,4 +232,12 @@ button
 {
     color: #A000A0;
     text-shadow: 0 0 10px #700070;
+}
+
+#transtext
+{
+    background-image: linear-gradient(90deg, #F5A9B8, #5BCEFA, #FFFFFF, #5BCEFA, #F5A9B8);
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 0px;
 }
