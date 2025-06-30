@@ -133,6 +133,9 @@ function setupCommands()
         consolePrintLine("You should get help.");
         consolePrintLine("try specifying the person you need help for in the help command.");
         consolePrintLine("append the person who needs help, i.e. `help mom`, `help me`, etc.");
+        consolePrintLine("...");
+        consolePrintLine("...");
+        consolePrintLine("if you want to go back to the homepage, type 'index'");
     };
 
     commands["help"] = () => {
@@ -166,17 +169,18 @@ function setupCommands()
         consolePrintLine(" Volume Serial Number is ????-????");
         consolePrintLine(" Directory of C:\\");
         consolePrintLine("\t");
-        consolePrintLine("INDEX     HTM     2,743 ??-??-??  6:66a");
-        consolePrintLine("PROJECTS  HTM     3,401 ??-??-??  6:66a");
-        consolePrintLine("TERMINAL  HTM       715 ??-??-??  6:66a");
-        consolePrintLine("SOCIALS   HTM     3,536 ??-??-??  6:66a");
-        consolePrintLine("ABOUT     HTM     2,094 ??-??-??  6:66a");
-        consolePrintLine("         6 file(s)       12,511 bytes");
+        consolePrintLine("INDEX     HTM     ?,??? ??-??-??  6:66a");
+        consolePrintLine("PROJECTS  HTM     ?,??? ??-??-??  6:66a");
+        consolePrintLine("TERMINAL  HTM     ?,??? ??-??-??  6:66a");
+        consolePrintLine("SOCIALS   HTM     ?,??? ??-??-??  6:66a");
+        consolePrintLine("GIMMICKS  HTM     ?,??? ??-??-??  6:66a");
+        consolePrintLine("ABOUT     HTM     ?,??? ??-??-??  6:66a");
+        consolePrintLine("         7 file(s)        ?,??? bytes");
         consolePrintLine("                          ????? bytes free");
         consolePrintLine("\t");
     };
 
-    commands["index"] = () => {
+    commands["homepage"] = commands["index"] = () => {
         window.location.href = "/";
     };
 
@@ -190,11 +194,15 @@ function setupCommands()
         window.location.href = "/socials";
     };
 
+    commands["gimmicks"] = () => {
+        window.location.href = "/gimmicks";
+    };
+
     commands["about"] = () => {
         window.location.href = "/about";
     };
 
-    commands["gay"] = commands["shit"] = commands["fuck"] = commands["sex"] = commands["yuri"] = commands["Yuri"] = commands["YURI"] = () => {
+    commands["lesbian"] = commands["gay"] = commands["shit"] = commands["fuck"] = commands["sex"] = commands["yuri"] = commands["Yuri"] = commands["YURI"] = () => {
         consolePrintLine("YURIIII I LOVE YURI I LOVE GIRLS I LOVE YURI I LOVE GIRLS", RED);
         consolePrintLine("DO YOU LOVE YURI AND GIRLS TOO?", RED);
     };

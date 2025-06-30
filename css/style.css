@@ -144,6 +144,14 @@ button
     cursor: pointer;
 }
 
+.contents textarea
+{
+    all: unset;
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid green;
+}
+
 /**
  * CRT Effect
  */

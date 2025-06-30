@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>...</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+        <script src="js/gimmicks.js"></script>
+    </head>
+
+    <body onload="initEverything()">
+        <div class="navigation-bar">
+            <div id="navigation-container">
+                <img src="img/smol-logo.png">
+
+                <ul>
+                    <li><a href="/">...</a></li>
+                    <li><a id="bluetext" href="projects">projects</a></li>
+                    <li><a id="redtext" href="terminal">terminal</a></li>
+                    <li><a id="yellowtext" href="socials">socials</a></li>
+                    <li><button><u>gimmicks</u></button></li>
+                    <li><a id="purpletext" href="about">about</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="contents">
+            <h1><u>HAIIII SEND ME STUFFZ HERE</u></h1><br/>
+
+            <br/>
+
+            <p>
+                <textarea id="message-input" rows="4" placeholder="Send me a message!"></textarea><br/>
+                <button id="send-message" onclick="submit_text_message()">Send the message!</button>
+            </p>
+
+            <br/>
+
+            <p>
+                <b>DRAWING GIMMICK COMING SOON:tm:</b>
+            </p>
+        </div>
+    </body>
+</html>
