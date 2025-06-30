@@ -23,6 +23,9 @@ function initEverything()
 
 function submit_text_message()
 {
+    if (message_input.value == "")
+        return;
+
     var data = {
         time: time_and_date_string(),
         message: message_input.value
