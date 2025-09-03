@@ -1,3 +1,7 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+import { initializeAppCheck, ReCaptchaV3Provider } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-app-check.js';
+
 const firebaseConfig = {
     apiKey: "AIzaSyCWpFccrfHtTMXJbiU_74SvPbnByFKCkYw",
     authDomain: "gamingnoobdev.firebaseapp.com",
@@ -8,38 +12,55 @@ const firebaseConfig = {
     appId: "1:983937650680:web:abe755eb358eafa90ad00d"
 };
 
+var app;
+
 let message_input, maindatabase, textsdatabase, imagedatabase;
 
-function initEverything()
-{
-    firebase.initializeApp(firebaseConfig);
+window.initEverything = initEverything
+window.submit_text_message = submit_text_message
+window.erase = erase
+window.submit_drawing = submit_drawing
+window.redo = redo
+window.undo = undo
 
-    maindatabase = firebase.database();
-    textsdatabase = maindatabase.ref().child("texts");
-    imagedatabase = maindatabase.ref().child("images");
+export function initEverything()
+{
+    app = initializeApp(firebaseConfig);
+    initializeAppCheck(app, {
+        provider: new ReCaptchaV3Provider('6LdiA70rAAAAAJCDnWvYC3mm4CcRKzVrROj-2w5o'),
+        isTokenAutoRefreshEnabled: true
+    })
+
+    maindatabase = getDatabase();
+    textsdatabase = ref(maindatabase, "texts/");
+    imagedatabase = ref(maindatabase, "images/");
 
     message_input = document.getElementById("message-input");
 
     initDrawing();
 }
 
-function submit_text_message()
+export function submit_text_message()
 {
     if (message_input.value == "")
-        return;
+    {
+        alert("no empty images smh")
+        return
+    }
 
     var data = {
         time: time_and_date_string(),
         message: message_input.value
     };
 
-    message_input.value = "";
-
-    var newPostKey = maindatabase.ref().child("texts").push().key;
-    var updates = {};
-    updates["/" + newPostKey] = data;
-    textsdatabase.update(updates);
-    alert("Message sent!!");
+    push(textsdatabase, data)
+        .then(() => {
+            alert("Message sent!!");
+        })
+        .catch((error) => {
+            alert(`failed to send message ${error.message}`)
+            console.error("failed", error)
+        })
 }
 
 function time_and_date_string()
@@ -62,7 +83,9 @@ var canvas, toooooolbar, ctx,
     dot_flag = false,
     drawcolor = "black",
     lineWidth = 5,
-    isTouch = false
+    isTouch = false,
+    w = 512,
+    h = 512
 
 let history = []
 let historyIndex = -1
@@ -148,7 +171,7 @@ function draw()
     ctx.closePath()
 }
 
-function erase()
+export function erase()
 {
     var m = confirm("Want to clear? (will reset history)")
     if (!m)
@@ -159,7 +182,7 @@ function erase()
     historyIndex = -1
 }
 
-function submit_drawing()
+export function submit_drawing()
 {
     if (history.length == 0)
     {
@@ -174,11 +197,14 @@ function submit_drawing()
         image: dataURL
     };
 
-    var newPostKey = maindatabase.ref().child("images").push().key;
-    var updates = {};
-    updates["/" + newPostKey] = data;
-    imagedatabase.update(updates);
-    alert("Image sent!!");
+    push(imagedatabase, data)
+        .then(() => {
+            alert("Image sent!!");
+        })
+        .catch((error) => {
+            alert(`failed to send image ${error.message}`)
+            console.error("failed", error)
+        })
 }
 
 function findxy(res, e)
@@ -248,7 +274,7 @@ function saveToHistory()
     historyIndex++
 }
 
-function redo()
+export function redo()
 {
     if (historyIndex == history.length - 1)
         return
@@ -268,7 +294,7 @@ function redo()
     img.src = prevState
 }
 
-function undo()
+export function undo()
 {
     if (historyIndex < 0)
         return
