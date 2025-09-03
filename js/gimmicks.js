@@ -62,7 +62,8 @@ var canvas, toooooolbar, ctx,
     dot_flag = false,
     drawcolor = "black",
     lineWidth = 5,
-    isRoundEnded = true;
+    isRoundEnded = true,
+    isTouch = false;
 
 function initDrawing()
 {
@@ -93,16 +94,33 @@ function initDrawing()
             isRoundEnded = e.target.checked
     })
 
+    canvas.addEventListener("touchstart", function (e) {
+        isTouch = true
+        findxy("down", e)
+    }, false);
+    canvas.addEventListener("touchend", function (e) {
+        isTouch = true
+        findxy("up", e)
+    }, false);
+    canvas.addEventListener("touchmove", function (e) {
+        isTouch = true
+        findxy("move", e)
+    }, false);
+
     canvas.addEventListener("mousemove", function (e) {
+        isTouch = false
         findxy("move", e)
     }, false)
     canvas.addEventListener("mousedown", function (e) {
+        isTouch = false
         findxy("down", e)
     }, false)
     canvas.addEventListener("mouseup", function (e) {
+        isTouch = false
         findxy("up", e)
     }, false)
     canvas.addEventListener("mouseout", function (e) {
+        isTouch = false
         findxy("out", e)
     }, false)
 }
@@ -150,6 +168,11 @@ function findxy(res, e)
         prevY = currY;
         currX = e.clientX - canvas.offsetLeft;
         currY = e.clientY - canvas.offsetTop;
+        if (isTouch)
+        {
+            currX = e.touches[0].clientX - canvas.offsetLeft;
+            currY = e.touches[0].clientY - canvas.offsetTop;
+        }
 
         flag = true;
         dot_flag = true;
@@ -172,6 +195,11 @@ function findxy(res, e)
         prevY = currY;
         currX = e.clientX - canvas.offsetLeft;
         currY = e.clientY - canvas.offsetTop;
+        if (isTouch)
+        {
+            currX = e.touches[0].clientX - canvas.offsetLeft;
+            currY = e.touches[0].clientY - canvas.offsetTop;
+        }
         draw();
     }
 }
