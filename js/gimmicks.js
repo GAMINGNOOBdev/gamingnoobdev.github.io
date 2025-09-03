@@ -165,6 +165,12 @@ function erase()
 
 function submit_drawing()
 {
+    if (history.length == 0)
+    {
+        alert("no empty images smh")
+        return
+    }
+
     var dataURL = canvas.toDataURL();
 
     var data = {
