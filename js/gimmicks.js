@@ -62,7 +62,6 @@ var canvas, toooooolbar, ctx,
     dot_flag = false,
     drawcolor = "black",
     lineWidth = 5,
-    isRoundEnded = true,
     isTouch = false
 
 let history = []
@@ -76,7 +75,6 @@ function initDrawing()
 
     drawcolor = document.getElementById("drawcolor").value
     lineWidth = parseInt(document.getElementById("thicc-ness").value)
-    document.getElementById("isRoundedEnd").checked = true
 
     w = canvas.width
     h = canvas.height
@@ -92,9 +90,6 @@ function initDrawing()
 
         if(e.target.id === "thicc-ness")
             lineWidth = e.target.value;
-
-        if (e.target.id === "isRoundedEnd")
-            isRoundEnded = e.target.checked
     })
 
     canvas.addEventListener("touchstart", function (e) {
@@ -148,7 +143,7 @@ function draw()
     ctx.lineTo(currX, currY)
     ctx.strokeStyle = drawcolor
     ctx.lineWidth = lineWidth
-    ctx.lineCap = isRoundEnded ? "round" : "butt"
+    ctx.lineCap = "round"
     ctx.stroke()
     ctx.closePath()
 }
@@ -161,6 +156,7 @@ function erase()
 
     ctx.clearRect(0, 0, w, h)
     history = []
+    historyIndex = -1
 }
 
 function submit_drawing()
