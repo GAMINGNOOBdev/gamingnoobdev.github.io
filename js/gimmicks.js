@@ -63,7 +63,10 @@ var canvas, toooooolbar, ctx,
     drawcolor = "black",
     lineWidth = 5,
     isRoundEnded = true,
-    isTouch = false;
+    isTouch = false
+
+let history = []
+let historyIndex = -1
 
 function initDrawing()
 {
@@ -97,10 +100,12 @@ function initDrawing()
     canvas.addEventListener("touchstart", function (e) {
         isTouch = true
         findxy("down", e)
+        e.preventDefault()
     }, false);
     canvas.addEventListener("touchend", function (e) {
         isTouch = true
         findxy("up", e)
+        e.preventDefault()
     }, false);
     canvas.addEventListener("touchmove", function (e) {
         isTouch = true
@@ -123,6 +128,17 @@ function initDrawing()
         isTouch = false
         findxy("out", e)
     }, false)
+
+    document.addEventListener('keydown', function(e) {
+        if (document.activeElement == message_input)
+            return
+
+        if ((e.ctrlKey || e.metaKey) && e.key === 'z')
+            undo()
+
+        if (((e.ctrlKey || e.metaKey) && e.key === 'y') || ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'z'))
+            redo()
+    });
 }
 
 function draw()
@@ -139,9 +155,12 @@ function draw()
 
 function erase()
 {
-    var m = confirm("Want to clear")
-    if (m)
-        ctx.clearRect(0, 0, w, h)
+    var m = confirm("Want to clear? (will reset history)")
+    if (!m)
+        return
+
+    ctx.clearRect(0, 0, w, h)
+    history = []
 }
 
 function submit_drawing()
@@ -162,17 +181,24 @@ function submit_drawing()
 
 function findxy(res, e)
 {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
     if (res == "down")
     {
         prevX = currX;
         prevY = currY;
-        currX = e.clientX - canvas.offsetLeft;
-        currY = e.clientY - canvas.offsetTop;
+        currX = e.clientX;
+        currY = e.clientY;
         if (isTouch)
         {
-            currX = e.touches[0].clientX - canvas.offsetLeft;
-            currY = e.touches[0].clientY - canvas.offsetTop;
+            currX = e.touches[0].clientX;
+            currY = e.touches[0].clientY;
         }
+
+        currX = (currX - rect.left) * scaleX
+        currY = (currY - rect.top) * scaleY
 
         flag = true;
         dot_flag = true;
@@ -187,19 +213,83 @@ function findxy(res, e)
     }
 
     if (res == "up" || res == "out")
+    {
         flag = false;
+        if (res == "up")
+            saveToHistory();
+    }
 
     if (res == "move" && flag)
     {
         prevX = currX;
         prevY = currY;
-        currX = e.clientX - canvas.offsetLeft;
-        currY = e.clientY - canvas.offsetTop;
+        currX = e.clientX;
+        currY = e.clientY;
         if (isTouch)
         {
-            currX = e.touches[0].clientX - canvas.offsetLeft;
-            currY = e.touches[0].clientY - canvas.offsetTop;
+            currX = e.touches[0].clientX;
+            currY = e.touches[0].clientY;
         }
+
+        currX = (currX - rect.left) * scaleX
+        currY = (currY - rect.top) * scaleY
         draw();
     }
+}
+
+function saveToHistory()
+{
+    if (historyIndex < history.length - 1)
+        history = history.slice(0, historyIndex+1)
+    var currentData = canvas.toDataURL();
+    history.push(currentData)
+    historyIndex++
+}
+
+function redo()
+{
+    if (historyIndex == history.length - 1)
+        return
+
+    historyIndex++
+    const prevState = history[historyIndex]
+
+    const img = new Image()
+    img.onload = function() {
+        const ctx = canvas.getContext("2d")
+        ctx.clearRect(0, 0, w, h)
+        ctx.drawImage(img, 0, 0)
+    }
+    img.onerror = function() {
+        console.error("cannot undo idk why")
+    }
+    img.src = prevState
+}
+
+function undo()
+{
+    if (historyIndex < 0)
+        return
+
+    if (historyIndex == 0)
+    {
+        ctx.clearRect(0, 0, w, h)
+        history = []
+        historyIndex = -1
+        return
+    }
+
+    historyIndex--
+    const prevState = history[historyIndex]
+    
+    const img = new Image()
+    img.onload = function() {
+        const ctx = canvas.getContext("2d")
+        ctx.clearRect(0, 0, w, h)
+        ctx.drawImage(img, 0, 0)
+    }
+    img.onerror = function() {
+        console.error("cannot undo idk why")
+    }
+    img.src = prevState
 }

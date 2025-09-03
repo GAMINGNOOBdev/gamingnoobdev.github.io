@@ -47,6 +47,8 @@
                     <label for="drawcolor">Color</label>
                     <input id="drawcolor" name='drawcolor' type="color">
                     <button onclick="erase()">Erase all</button>
+                    <button onclick="undo()">Undo</button>
+                    <button onclick="redo()">Redo</button>
                 </div><br/>
                 <canvas id="masterpiece-input" width="512px" height="512px" style="background-color: white; border: 1px solid black;"></canvas><br/>
                 <button id="send-drawing" onclick="submit_drawing()">Send the drawing!</button>
