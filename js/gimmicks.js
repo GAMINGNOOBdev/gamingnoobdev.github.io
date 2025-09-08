@@ -48,6 +48,11 @@ export function submit_text_message()
         return
     }
 
+    if (message_input.disabled == true)
+        alert("please don't spam.");
+
+    message_input.disabled = true
+
     var data = {
         time: time_and_date_string(),
         message: message_input.value
@@ -189,6 +194,11 @@ export function submit_drawing()
         alert("no empty images smh")
         return
     }
+
+    if (canvas.disabled == true)
+        alert("please don't spam.");
+
+    canvas.disabled = true
 
     var dataURL = canvas.toDataURL();
 
