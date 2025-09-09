@@ -4,9 +4,10 @@
         <meta charset="UTF-8">
         <title>... socials</title>
         <link rel="stylesheet" href="css/style.css">
+        <script src="js/githubcard.js"></script>
     </head>
 
-    <body>
+    <body onload="loadGithubCard()">
         <div class="navigation-bar">
             <div id="navigation-container">
                 <a href="/"><img src="img/smol-logo.png"></a>
@@ -28,30 +29,37 @@
 
             <br/>
 
+            <iframe
+                title="My discord profile :p"
+                width="340"
+                height="192"
+                frameborder="0"
+                sandbox="allow-scripts"
+                src="https://widgets.vendicated.dev/user?id=756935803686355125&theme=dark&banner=true&full-banner=true&rounded-corners=false&discord-icon=true&badges=false&guess-nitro=false&background-color=%238F00FF&foreground-color=%23FFFFFF"
+            ></iframe>
+
+            <br/>
+            <div id="github-profile-card"></div>
+            <br/>
+
+            <iframe src="https://gamer2810.github.io/steam-miniprofile/?accountId=76561199092026528&appId=1229490&interactive=true&vanityId=gamingnoobdev" style="width: 345px; height: 285px;"></iframe>
+
+            <br/>
+            <br/>
+
+            <iframe src="https://lastfmstats.com/user/gamingnoobdev/general" width="50%" height="500"></iframe>
+
+            <br/>
+
             <p style="text-align: center;">
-                <button onclick="location.href='https://discord.gg/8R5YyM3MEn'">
-                    <img src="img/discord.png" style="width: 20px; height: 20px;"/>
-                    <u><b>discord</b></u>
-                </button><br/>
-                <br/>
-                <button onclick="location.href='https://github.com/GAMINGNOOBdev'">
-                    <u><b>github</b></u>
-                    <img src="img/github.png" style="width: 20px; height: 20px;"/>
-                </button><br/>
-                <br/>
-                <button onclick="location.href='https://steamcommunity.com/profiles/76561199092026528'">
-                    <img src="img/steam.png" style="width: 20px; height: 20px;"/>
-                    <u><b>steam</b></u>
-                </button><br/>
-                <br/>
                 <button onclick="location.href='https://www.youtube.com/channel/UCJ8xjwr5Dk4oEb0i0RjkhYA'">
                     <u><b>youtube</b></u>
                     <img src="img/youtube.png" style="width: 20px; height: 20px;"/>
                 </button><br/>
                 <br/>
-                <button onclick="location.href='https://www.last.fm/user/gamingnoobdev'">
-                    <img src="img/last.fm.png" style="width: 20px; height: 20px;"/>
-                    <u><b>last.fm</b></u>
+                <button onclick="location.href='https://soundcloud.com/gamingnoobdev'">
+                    <img src="img/soundcloud.png" style="height: 20px;"/>
+                    <u><b>soundcloud</b></u>
                 </button><br/>
                 <br/>
                 <button onclick="location.href='https://www.twitch.tv/gamingnoobdev'">
@@ -72,11 +80,6 @@
                 <button onclick="location.href='https://osu.ppy.sh/users/29146016'">
                     <img src="img/osu.png" style="width: 20px; height: 20px;"/>
                     <u><b>osu</b></u>
-                </button><br/>
-                <br/>
-                <button onclick="location.href='https://soundcloud.com/gamingnoobdev'">
-                    <u><b>soundcloud</b></u>
-                    <img src="img/soundcloud.png" style="height: 20px;"/>
                 </button><br/>
             </p>
 
