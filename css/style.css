@@ -222,6 +222,33 @@ button
  * huge thanks to the author of https://oudkee.neocities.org/tutorials/tutcrt
  */
 
+#spinner
+{
+  animation-name: spin, depth;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 6s;
+}
+@keyframes spin
+{
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(-360deg); }
+}
+@keyframes depth
+{
+  0% { text-shadow: 0 0; }
+  25% { text-shadow: 1px 0, 2px 0, 3px 0, 4px 0, 5px 0; }
+  50% { text-shadow: 0 0; }
+  75% { text-shadow: -1px 0, -2px 0, -3px 0, -4px 0, -5px 0; }
+  100% { text-shadow: 0 0; }
+}
+
+#gimmickdisplay
+{
+    width: 512px;
+    height: 512px;
+}
+
 #redtext
 {
     color: #ff0000;
