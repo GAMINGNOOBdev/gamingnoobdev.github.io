@@ -14,7 +14,7 @@ const firebaseConfig = {
 
 var app;
 
-let message_input, maindatabase, textsdatabase, imagedatabase;
+let message_input, maindatabase, textsdatabase, imagedatabase, status_text;
 
 window.initEverything = initEverything
 window.submit_text_message = submit_text_message
@@ -34,22 +34,32 @@ export function initEverything()
     maindatabase = getDatabase();
     textsdatabase = ref(maindatabase, "texts/");
     imagedatabase = ref(maindatabase, "images/");
+    status_text = document.getElementById("status_text");
 
     message_input = document.getElementById("message-input");
 
     initDrawing();
 }
 
+export function playSound(url)
+{
+    const audio = new Audio(url);
+    audio.play();
+}
+
 export function submit_text_message()
 {
     if (message_input.value == "")
     {
-        alert("no empty images smh")
+        status_text.textContent = "no empty images smh"
         return
     }
 
     if (message_input.disabled == true)
-        alert("please don't spam.");
+    {
+        status_text.textContent = "taking away your privileges for sending gimmicks womp womp."
+        return
+    }
 
     message_input.disabled = true
 
@@ -60,10 +70,11 @@ export function submit_text_message()
 
     push(textsdatabase, data)
         .then(() => {
-            alert("Message sent!!");
+            playSound("../snd/explode.mp3");
+            status_text.textContent = "Message sent!!";
         })
         .catch((error) => {
-            alert(`failed to send message ${error.message}`)
+            status_text.textContent = `failed to send message ${error.message})`
             console.error("failed", error)
         })
 }
@@ -191,12 +202,21 @@ export function submit_drawing()
 {
     if (history.length == 0)
     {
-        alert("no empty images smh")
+        status_text.textContent = "no empty images smh"
         return
     }
 
     if (canvas.disabled == true)
-        alert("please don't spam.");
+    {
+        status_text.textContent = "please don't spam."
+        return
+    }
+
+    if (canvas.width != w || canvas.height != h)
+    {
+        status_text.textContent = "STOP MESSING WITH ME YOU MOTHERFUCKER"
+        return
+    }
 
     canvas.disabled = true
 
@@ -209,10 +229,11 @@ export function submit_drawing()
 
     push(imagedatabase, data)
         .then(() => {
-            alert("Image sent!!");
+            playSound("../snd/explode.mp3");
+            status_text.textContent = "Image sent!!"
         })
         .catch((error) => {
-            alert(`failed to send image ${error.message}`)
+            status_text.textContent = `failed to send image ${error.message}`
             console.error("failed", error)
         })
 }
