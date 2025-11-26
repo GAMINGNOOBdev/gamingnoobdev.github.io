@@ -12,6 +12,11 @@
     </head>
 
     <body onload="initEverything()">
+        <audio src="snd/shopmusic.mp3" preload="auto" volume="0.5" loop autoplay>
+            Your browser does not support the audio element. \<\/3
+        </audio>
+        <script>var audio = document.getElementsByTagName('audio')[0]; audio.volume = 0.25;</script>
+
         <div class="navigation-bar">
             <div id="navigation-container">
                 <img src="img/smol-logo.png">
