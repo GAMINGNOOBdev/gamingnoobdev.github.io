@@ -4,9 +4,19 @@
         <meta charset="UTF-8">
         <title>GIMMICKS!!!</title>
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-check.js"></script>
+        <script type='module' src="js/gimmicks.js"></script>
     </head>
 
     <body onload="initEverything()">
+        <audio src="snd/shopmusic.mp3" preload="auto" volume="0.5" loop autoplay>
+            Your browser does not support the audio element. \<\/3
+        </audio>
+        <script>var audio = document.getElementsByTagName('audio')[0]; audio.volume = 0.25;</script>
+
         <div class="navigation-bar">
             <div id="navigation-container">
                 <img src="img/smol-logo.png">
@@ -24,32 +34,35 @@
         </div>
 
         <div class="contents">
-            <h1><u>gimmicks are gone, ya'll dont want me to have fun i guess</u></h1><br/>
+            <h1><u>HAIIII SEND ME STUFFZ HERE</u></h1><br/>
 
             <br/>
 
             <p>
-                for context:<br/><br/>
-                this page was entirely made for fun, for me to try out and replicate the straw page gimmicks myself.
-                <br/>
-                my question to the people who tried to let me know:<br/>
-                why are you just trying to ruin my mood?<br/>
-                why are you just fucking around in something you shouldn't?<br/>
-                why are you messing and tinkering and experimenting with a personal website?<br/>
-                why the fuck are you even here?<br/>
-                what was your fucking goal?<br/>
-                was it to just fuck with me?<br/>
-                to laugh and say "haha she doesn't know it's a bad thing to do"?<br/>
-                did you know that i already knew all about this?<br/>
-                i knew about all of this shit already and just didn't EVER have the time nor motivation nor saw the real need to do anything about it.<br/>
-                i knew all well that anyone could have just taken a copy of all the gimmicks for themselves.<br/>
-                <br/>
-                have you ever heard about being busy? having something else to do?<br/>
-                im sure you haven't because why else would you fucking mess with this page, huh?<br/>
-                move on with your day please.<br/>
-                <br/>
-                - sincerely, mad violet at 2am, because you fuckers won't give me a break.<br/>
+                <textarea id="message-input" rows="4" spellcheck="false" placeholder="Send me a message!"></textarea><br/>
+                <button id="send-message" onclick="submit_text_message()">Send the message!</button>
             </p>
+
+            <br/>
+
+            <div>
+                <b>Draw awesome things!</b>
+                <div id="toolbar">
+                    <label for="thicc-ness">Thickness</label>
+                    <input type="range" min="1" max="50" value="25" class="slider" id="thicc-ness">
+                    <label for="drawcolor">Color</label>
+                    <input id="drawcolor" name='drawcolor' type="color">
+                    <button onclick="erase()">Erase all</button>
+                    <button onclick="undo()">Undo</button>
+                    <button onclick="redo()">Redo</button>
+                </div><br/>
+                <canvas id="masterpiece-input" width="512px" height="512px" style="background-color: white; border: 1px solid black;"></canvas><br/>
+                <button id="send-drawing" onclick="submit_drawing()">Send the drawing!</button>
+            </div>
+
+            <b id="status_text" style="color: orange; text-shadow: 0 0 10px #996600; font-size: x-large; position: fixed; left: 10px; bottom: 0;">
+                Waiting for a gimmick...
+            </b>
         </div>
     </body>
 </html>
