@@ -195,7 +195,7 @@ function setupCommands()
     };
 
     commands["gimmicks"] = () => {
-        window.location.href = "/gimmicks";
+        window.location.href = "https://gamingnoobdev.straw.page/";
     };
 
     commands["about"] = () => {
