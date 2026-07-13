@@ -182,7 +182,7 @@ function setupCommands()
         consolePrintLine("\t");
     };
 
-    commands["jarona"] = () => {
+    commands["jarona"] = commands["JARONA"] = () => {
         var audio = new Audio("snd/jarona.mp3");
         audio.volume = 0.25;
         audio.play();

@@ -3,11 +3,14 @@ audio.volume = 0.25;
 
 var keybuffer = "";
 document.addEventListener("keydown", function(event){
+    if (event.key.length > 1)
+        return;
+
     keybuffer += event.key;
     if (keybuffer.length > 6)
         keybuffer = keybuffer.substring(1);
 
-    if (keybuffer.toLocaleLowerCase() === "jarona")
+    if (keybuffer.toLocaleLowerCase() == "jarona")
     {
         var jarona = new Audio("snd/jarona.mp3");
         jarona.volume = 0.25;
