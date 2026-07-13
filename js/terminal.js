@@ -1,3 +1,6 @@
+var audio = document.getElementsByTagName('audio')[0];
+audio.volume = 0.25;
+
 const RED = "redtext";
 const BLUE = "bluetext";
 const YELLOW = "yellowtext";
@@ -103,7 +106,6 @@ function handleCommand(command)
     }
     catch (error)
     {
-        // consolePrintLine(`No such command as '${ command }'`);
         consolePrintLine("Bad command or file name");
     }
 }
@@ -178,6 +180,12 @@ function setupCommands()
         consolePrintLine("         7 file(s)        ?,??? bytes");
         consolePrintLine("                          ????? bytes free");
         consolePrintLine("\t");
+    };
+
+    commands["jarona"] = () => {
+        var audio = new Audio("snd/jarona.mp3");
+        audio.volume = 0.25;
+        audio.play();
     };
 
     commands["homepage"] = commands["index"] = () => {
