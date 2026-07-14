@@ -1,13 +1,14 @@
 const audio = document.getElementsByTagName('audio')[0];
 const jaronaDisplay = document.createElement("div");
+var maxJPS = 0, maxJPM = 0;
+var jpsCollection = [];
+var jps = 0, jpm = 0;
 var jaronaCount = 0;
-var maxJPS = 0;
-var jps = 0;
 
 document.body.appendChild(jaronaDisplay);
 audio.volume = 0.25;
 
-function showJPS(){
+function showJaronaMeter(){
     jaronaDisplay.style = `
         position: fixed;
         bottom: 10px;
@@ -19,11 +20,12 @@ function showJPS(){
         padding: 5px;
     `;
     jaronaDisplay.innerHTML = `
-        JARONA PER SECOND<br/>${jps} (PB: ${maxJPS})
+        JARONA PER SECOND<br/>${jps} (PB: ${maxJPS})<br/>
+        JARONA PER MINUTE<br/>${jpm} (PB: ${maxJPM})
     `;
 }
 
-function hideJPS()
+function hideJaronaMeter()
 {
     jaronaDisplay.style = `display:none;`;
 }
@@ -31,15 +33,22 @@ function hideJPS()
 window.setInterval(() => {
     jps = jaronaCount;
     maxJPS = jps > maxJPS ? jps : maxJPS;
+    jpsCollection.push(jps);
+    if (jpsCollection.length > 60)
+        jpsCollection.shift();
+
+    jpm = (jpsCollection.reduce((a, b) => a + b) / jpsCollection.length).toFixed(2);
+    maxJPM = jpm > maxJPM ? jpm : maxJPM;
+
     jaronaCount = 0;
 
-    if (jps == 0)
+    if (jps == 0 && jpm == 0)
     {
-        hideJPS();
+        hideJaronaMeter();
         return;
     }
 
-    showJPS();
+    showJaronaMeter();
 }, 1000);
 
 var keybuffer = "";
@@ -57,6 +66,7 @@ document.addEventListener("keydown", function(event){
         jarona.volume = 0.25;
         jarona.play();
         jaronaCount++;
-        showJPS();
+        jaronaMinuteCount++;
+        showJaronaMeter();
     }
 });
