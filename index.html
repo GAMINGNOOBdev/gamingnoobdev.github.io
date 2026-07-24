@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>...</title>
         <link rel="stylesheet" href="css/style.css">
+        <script src="js/blogapi.js"></script>
     </head>
 
     <body>
@@ -31,6 +32,8 @@
         <div class="contents">
             <h1><u>hello...</u></h1><br/>
             <h2><u>welcome to the homepage aka blog-like page</u></h2>
+
+            <div id="post-container"></div>
 
             <br/>
 
@@ -71,5 +74,11 @@
                 i guess
             </p>
         </div>
+
+        <script>
+            window.addEventListener("DOMContentLoaded", async () => {
+                blogapi.init();
+            });
+        </script>
     </body>
 </html>

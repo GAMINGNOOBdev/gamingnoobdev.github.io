@@ -4,13 +4,21 @@
     src: url('../fonts/MorePerfectDOSVGA.ttf') format("truetype");
 }
 
+:root {
+    --bgcol: #191919;
+    --navbarbg: #292929;
+    --textcol: green;
+    --textshadow: #00aa00;
+    --boxbgcol: #003300;
+}
+
 body, html
 {
     font-family: msdosfont, monospace, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #191919;
+    background-color: var(--bgcol);
     overflow-x: hidden;
 }
 body{
@@ -40,7 +48,7 @@ button
 
 .navigation-bar
 {
-    background-color: #292929;
+    background-color: var(--navbarbg);
     height: 64px;
     width: 100%;
     text-align:center;
@@ -74,38 +82,38 @@ button
 
 .navigation-bar li a
 {
-    color: green;
-    text-shadow: 0 0 10px #00ff00;
+    color: var(--textcol);
+    text-shadow: 0 0 10px var(--textshadow);
     font-size: 16px;
     text-decoration: none;
     line-height: 64px;
     padding: 5px 15px;
     text-align: center;
-    border: 1px solid rgba(1,1,1,0);
+    border: 1px solid transparent;
     border-radius: 6px;
 }
 
 .navigation-bar li a:hover
 {
-    border-color: rgba(1,1,1,1);
+    border-color: var(--textcol);
 }
 
 .navigation-bar li button
 {
-    color: green;
-    text-shadow: 0 0 10px #00ff00;
+    color: var(--textcol);
+    text-shadow: 0 0 10px var(--textshadow);
     font-size: 16px;
     text-decoration: none;
     padding: 5px 15px;
     text-align: center;
-    border: 1px solid rgba(1,1,1,0);
+    border: 1px solid transparent;
     border-radius: 6px;
 }
 
 .navigation-bar li button:hover
 {
     cursor: pointer;
-    border-color: rgba(1,1,1,1);
+    border-color: var(--textcol);
 }
 
 /**
@@ -114,11 +122,53 @@ button
 
 .contents
 {
-    color: green;
-    text-shadow: 0 0 10px #009900;
+    color: var(--textcol);
+    text-shadow: 0 0 10px var(--textshadow);
     padding-top: 64px;
     word-break: break-word;
     word-wrap: break-word;
+}
+
+.contents #post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.contents .post {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    max-width: 45%;
+    max-height: 300px;
+    width: 45%;
+    height: 300px;
+    text-align: left;
+
+    border: 1px solid var(--textcol);
+    box-shadow: 2px 2px 2px 2px var(--boxbgcol);
+    overflow: hidden;
+}
+
+.contents .post .header {
+    display: block;
+    font-weight: bold;
+    border-bottom: 1px solid var(--textcol);
+    padding: 5px 8px;
+}
+
+.contents .post .body {
+    flex-grow: 1;
+    padding: 8px;
+    overflow-y: auto;
+}
+
+.contents .post .footer {
+    display: block;
+    border-top: 1px solid var(--textcol);
+    padding: 5px 8px;
+    font-size: 0.9em;
 }
 
 .contents p
@@ -127,8 +177,8 @@ button
     max-width: 45%;
     text-align: left;
 
-    border: 1px solid green;
-    box-shadow: 1px 1px 1px 1px #003300;
+    border: 1px solid var(--textcol);
+    box-shadow: 1px 1px 1px 1px var(--boxbgcol);
     padding: 5px;
 }
 
@@ -153,7 +203,7 @@ button
     all: unset;
     width: 100%;
     max-width: 100%;
-    border: 1px solid green;
+    border: 1px solid var(--textcol);
 }
 
 /**
